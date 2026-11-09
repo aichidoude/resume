@@ -3,8 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>胡皓 · 数字IP设计工程师</title>
-<meta name="description" content="胡皓 - 数字IP设计工程师，NPU/SLAM/ISP IP 设计，大疆威新研发部芯片设计组">
+<title>胡皓 · 个人工作台</title>
 <style>
 :root {
   --bg: #f4f6fa; --card: #fff; --ink: #1d2733; --sub: #65707e; --line: #e3e8ef;
@@ -130,268 +129,207 @@ tr:hover td { background: #f8fafd; }
 
 /* 手机适配 */
 @media (max-width: 760px) {
-  .pw-hero { padding: 24px 18px 20px; }
-  .pw-hero h1 { font-size: 22px; }
-  .pw-hero .contact { gap: 8px; font-size: 12px; }
-  .pw-nav .inner { padding: 0 12px; }
-  .pw-tab { padding: 11px 14px; font-size: 13px; }
-  .pw-wrap { padding: 14px 14px 50px; }
-  .grid2 { grid-template-columns: 1fr; }
+  header.top { padding: 16px 16px 0; }
+  .head-row { flex-direction: column; gap: 4px; }
+  .head-row h1 { font-size: 18px; }
+  .head-row .meta { font-size: 11px; }
+  nav.tabs a.tab { padding: 8px 12px; font-size: 12.5px; }
+  .wrap { padding: 14px 14px 50px; }
   .stat-row { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .stat { padding: 12px 14px; }
   .stat .num { font-size: 20px; }
   .card { padding: 14px 16px; }
-  .proj-grid { grid-template-columns: 1fr; }
   .filter-row input, .filter-row select { min-width: 0; width: 100%; }
-  .modal .box { padding: 18px 16px; }
-  .pw-hero .inner { flex-direction: column; align-items: flex-start; }
+  .readonly-table { display: none; }
+}
+.panel { display: none; }
+.panel.active { display: block; }
+.notice { background: #fff8ec; border: 1px solid #f0dcc0; color: #8a5a13; border-radius: 10px; padding: 10px 16px; font-size: 12.5px; margin-bottom: 16px; }
+.app-row { background: #fff; border-radius: 12px; box-shadow: 0 2px 10px rgba(30,45,70,.06); padding: 14px 18px; margin-bottom: 12px; }
+.app-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.app-head .co { font-size: 14.5px; font-weight: 700; }
+.app-head .ro { font-size: 13px; color: var(--sub); }
+.stepper { display: flex; gap: 2px; margin-top: 10px; flex-wrap: wrap; }
+.step { padding: 3px 8px; border-radius: 6px; font-size: 11.5px; background: #f1f4f9; color: #9aa4b2; white-space: nowrap; }
+.step.done { background: var(--chip); color: var(--accent); }
+.step.current { background: var(--accent); color: #fff; font-weight: 700; }
+.step.eliminated { background: #fbe9e7; color: var(--bad); font-weight: 700; }
+.tag-eliminated { background: #fbe9e7; color: var(--bad); border-radius: 4px; padding: 1px 8px; font-size: 12px; }
+.salary-line { margin-top: 8px; font-size: 12.5px; color: #3d4a5c; background: rgba(47,111,208,.07); border-radius: 5px; padding: 4px 10px; }
+.mobile-list { display: none; }
+@media (max-width: 760px) {
+  .mobile-list { display: block; }
+  .job-card-m { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin-bottom: 10px; }
+  .job-card-m .t { font-weight: 700; font-size: 13px; }
+  .job-card-m .d { font-size: 12px; color: var(--sub); margin-top: 2px; }
 }
 </style>
 </head>
 <body>
-<div class="pw-hero">
-  <div class="inner">
-    <div>
-      <h1 id="heroName"></h1>
-      <div class="headline" id="heroHeadline"></div>
-      <div class="contact">
-        <span id="heroPhone"></span>
-        <span id="heroEmail"></span>
-        <span id="heroLoc"></span>
-      </div>
-    </div>
+<header class="top">
+  <div class="head-row">
+    <h1>胡皓 · 个人工作台</h1>
+    <div class="meta">数字IP设计工程师 ｜ 大疆威新研发部芯片设计组 ｜ 在线只读快照 · 更新于 <span id="genAt"></span></div>
   </div>
-</div>
+  <nav class="tabs">
+    <a class="tab active" data-tab="personal" href="#personal">个人网页</a>
+    <a class="tab" data-tab="jobs" href="#jobs">岗位资源池</a>
+    <a class="tab" data-tab="apps" href="#apps">投递情况</a>
+  </nav>
+</header>
 
-<div class="pw-nav">
-  <div class="inner">
-    <a class="pw-tab active" data-p="basic" href="#basic">个人基本信息</a>
-    <a class="pw-tab" data-p="proj" href="#proj">项目情况</a>
-  </div>
-</div>
-
-<div class="pw-wrap">
-  <section class="panel active" id="panel-basic">
-    <div class="stat-row">
-      <div class="stat"><div class="num" id="sYears">3年</div><div class="lbl">工作经验</div></div>
-      <div class="stat"><div class="num" id="sEdu">硕士</div><div class="lbl">最高学历</div></div>
-      <div class="stat"><div class="num" id="sProjects">-</div><div class="lbl">项目/工作项</div></div>
-      <div class="stat"><div class="num" id="sAwards">-</div><div class="lbl">荣誉奖项</div></div>
-    </div>
-    <div class="grid2">
-      <div>
-        <div class="card">
-          <h2>基本信息</h2>
-          <div class="kv"><b>求职意向</b><span id="pHeadline"></span></div>
-          <div class="kv"><b>城市</b><span id="pLoc"></span></div>
-          <div class="kv"><b>目标岗位</b><span id="pRoles"></span></div>
-        </div>
-        <div class="card">
-          <h2>教育经历</h2>
-          <div id="pEdu"></div>
-        </div>
-        <div class="card">
-          <h2>荣誉 & 语言</h2>
-          <div id="pAwards"></div>
-          <div id="pLangs" style="margin-top:8px"></div>
-        </div>
-      </div>
-      <div>
-        <div class="card">
-          <h2>工作经历</h2>
-          <div id="pWork"></div>
-        </div>
-        <div class="card">
-          <h2>专业技能</h2>
-          <div id="pSkills"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel" id="panel-proj">
+<div class="wrap">
+  <section class="panel active" id="panel-personal">
     <div class="card">
-      <h2>项目情况 <span class="hint">点击卡片查看详情</span></h2>
-      <div class="filter-row">
-        <input id="projFilter" placeholder="搜索项目名称 / 状态…">
-        <select id="projCat"><option value="">全部分类</option></select>
+      <h2>个人信息</h2>
+      <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700" id="wName"></div>
+          <div style="color:var(--accent-2);font-size:13px;margin:2px 0 8px" id="wHeadline"></div>
+          <div class="kv"><b>电话</b><span id="wPhone"></span></div>
+          <div class="kv"><b>邮箱</b><span id="wEmail"></span></div>
+          <div class="kv"><b>城市</b><span id="wLoc"></span></div>
+          <div style="margin-top:8px"><b style="font-size:13px">目标岗位：</b><span id="wRoles"></span></div>
+        </div>
+        <a class="btn" style="padding:10px 22px;font-size:13.5px" href="/personal.html" target="_blank" rel="noopener">打开个人网页 →</a>
       </div>
-      <div id="projList"></div>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="num" id="wProjects">-</div><div class="lbl">项目/工作项</div></div>
+      <div class="stat"><div class="num" id="wJobs">-</div><div class="lbl">岗位资源池</div></div>
+      <div class="stat"><div class="num" id="wApps">-</div><div class="lbl">计划投递</div></div>
+      <div class="stat"><div class="num" id="wActive">-</div><div class="lbl">投递进行中</div></div>
     </div>
   </section>
-</div>
 
-<div class="modal" id="modal">
-  <div class="box">
-    <span class="close" onclick="document.getElementById('modal').classList.remove('show')">✕</span>
-    <div id="modalText"></div>
-  </div>
+  <section class="panel" id="panel-jobs">
+    <div class="notice">在线版本为只读快照，数据来自本地工作台；编辑（增删岗位/投递）请在本地运行 node D:\claude\简历\web\server.mjs</div>
+    <div class="filter-row">
+      <input id="jobFilter" placeholder="搜索岗位 / 公司 / 城市 / 要求…">
+      <select id="jobCompany"><option value="">全部公司</option></select>
+    </div>
+    <div class="card readonly-table" style="padding:0">
+      <div style="max-height:calc(100vh - 300px);overflow:auto">
+        <table>
+          <thead><tr><th>公司</th><th>岗位</th><th>城市</th><th>关键要求</th><th>投递</th></tr></thead>
+          <tbody id="jobBody"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="mobile-list" id="jobMobile"></div>
+  </section>
+
+  <section class="panel" id="panel-apps">
+    <div class="notice">在线版本为只读快照；推进/淘汰/记录请在本地工作台操作</div>
+    <div class="stat-row">
+      <div class="stat"><div class="num" id="aTotal">-</div><div class="lbl">计划投递总数</div></div>
+      <div class="stat"><div class="num" id="aActive">-</div><div class="lbl">进行中</div></div>
+      <div class="stat"><div class="num" id="aEliminated">-</div><div class="lbl">已淘汰</div></div>
+      <div class="stat"><div class="num" id="aOffer">-</div><div class="lbl">已谈薪</div></div>
+    </div>
+    <div id="appList"></div>
+  </section>
 </div>
 
 <script>
-const DATA = {"profile":{"full_name":"胡皓","preferred_name":null,"headline":"AI-ISP IP设计 / NPU设计","photo":"D:/claude/简历/照片/black.png","location":"深圳","phone":"13865396978","email":"1813149039@qq.com","links":{"github":null,"linkedin":null,"portfolio":null,"website":null,"other":[]}},"objective":{"target_roles":["AI-ISP IP设计","NPU设计"],"target_industries":[],"summary_facts":["毕业三年，目前在大疆威新研发部从事芯片设计（NPU/ISP/SLAM IP）","参与多颗芯片流片：N6工艺已回片及首产品测试、多个 IP 即将 N3P工艺流片","电子科技大学硕士（保研，研究方向 FPGA），华为海思实习经历"]},"education":[{"id":"edu-001","school":"电子科技大学","degree":"硕士","major":"光学工程","minor":null,"location":"成都","start_date":"2020-09","end_date":"2023-06","gpa":"3.51/4.00","courses":[],"honors":["保研","一等学业奖学金"],"activities":["研究方向：FPGA"],"source_notes":["校招版简历"]},{"id":"edu-002","school":"电子科技大学","degree":"本科","major":"电子科学与技术","minor":null,"location":"成都","start_date":"2016-09","end_date":"2020-06","gpa":"3.73/4.00","courses":[],"honors":["优秀毕业生（2020）"],"activities":[],"source_notes":["校招版简历"]}],"work":{"id":"work-001","company":"大疆创新","role":"数字IP设计工程师","employment_type":"全职","location":"深圳","start_date":"2023-07","end_date":"present","is_current":true,"team":"威新研发部芯片设计组","business_context":"无人机/机器人芯片研发，覆盖 NPU、SLAM 视觉、ISP 图像处理链路","responsibilities":["NPU IP 设计与验证（linesync_dma、VCR、非线性算子）","SLAM IP 设计与 PPA 优化（deroll_maphex、mdtsp、voapp）","ISP IP 设计与硬化（loco_apply、3dlut、hflip、dither、cve_harden）","技术规划（飞行VLX调研、no_rst寄存器、lut实现优化、hdrnet方案）"],"achievements":[{"claim":"linesync_dma R2T/T2T IP 开发：基于 linesync 协议完成 isp ocm 到 npu L3 sram 的 tile 级在线数据搬运，支持 y/yuv/bayer 格式、固定有损压缩、unshuffle、uint2int","metric":"N3P工艺已TO","evidence":"社招版简历工作经历","technologies":["DMA","linesync","有损压缩"],"confidence":"high"},{"claim":"VCR IP 升级：4K 图像 crop+resize、YUV转RGB、10b转8b，新增 dubc 压缩/解压格式与两级缓存带宽优化","metric":"N3P工艺已TO","evidence":"社招版简历工作经历","technologies":["resize","dubc","图像前处理"],"confidence":"high"},{"claim":"非线性算子调研：调研 nvidia minimax 实现 exp/ln/1/x/sin/cos/tanh/atan，完成调研文档、算法原型、精度测试代码、RTL demo","metric":"已落地 NPU SFU（精度较常规插值高 3 个数量级）","evidence":"社招版简历工作经历 + QuadraticIEEETC0305.pdf","technologies":["minimax","SFU","多项式逼近"],"confidence":"high"},{"claim":"deroll_maphex 升级：基于相机内外参和 IMU 数据完成去畸变和 derolling，压缩流水线、计算重排布","metric":"N6工艺已量产（PR 面积 -3.9%，PA 仿真功耗 -16.1%）","evidence":"社招版简历工作经历","technologies":["去畸变","derolling","IMU"],"confidence":"high"},{"claim":"mdtsp IP 全新开发：多帧处理（pre-process、maphex、warp、merge），上下目/前后帧 dtof 数据融合","metric":"N3P工艺已TO（sensor 有效量程 +33%）","evidence":"社招版简历工作经历","technologies":["dToF","多帧融合"],"confidence":"high"},{"claim":"voapp 链路 PPA 优化：harris/census linebuf 合并、pyramid 分时复用 memory、raster2tile","metric":"N3P工艺已TO（PR 面积 -32.3%）","evidence":"社招版简历工作经历","technologies":["harris","census","pyramid","KLT"],"confidence":"high"},{"claim":"ISP IP 设计：loco_apply（已交付）、3dlut、hflip、dither（开发中）；cve_harden 硬化（开发中）","metric":null,"evidence":"用户口述补充，细节待补充","technologies":["ISP","3DLUT","dither","hardening"],"confidence":"medium"},{"claim":"voa_harden 已交付（SLAM 链路硬化）","metric":"N3P工艺已TO","evidence":"用户口述补充，细节待补充","technologies":["hardening"],"confidence":"medium"},{"claim":"no_rst 寄存器调研：基于 claude-opus4.6 完成 SLAM IP 批量替换无复位寄存器","metric":"已落地（折算 PR 面积 -1%，PA 仿真功耗 -3%）","evidence":"社招版简历技术规划","technologies":["no_rst","低功耗"],"confidence":"high"},{"claim":"lut 实现前后端联合优化：实现 9 种 257x16 gamma 方案，找出面积/功耗/congestion 均衡解，完成 PA 到 joules、PTPX 验证","metric":"已落地（超 50% lut 相关 IP 完成落地）","evidence":"用户口述补充","technologies":["LUT","gamma","PTPX"],"confidence":"medium"},{"claim":"hdrnet 方案输出：NN 实现 HDR，下一代替换 loco 方案以减小面积功耗、提升效果","metric":"分析中","evidence":"用户口述补充","technologies":["HDR","hdrnet","NN"],"confidence":"medium"},{"claim":"支持飞行VLX方案落地：飞行快慢系统大模型算法调研，实测 rk182x 带宽","metric":"已结项","evidence":"社招版简历技术规划","technologies":["VLX","大模型"],"confidence":"medium"},{"claim":"AI开发流程实践：基于 cmodel 打通 preg、lrs、lld、rtl、ppa 优化流程，依托组内知识库支持 CBB","metric":"虚拟组推广中","evidence":"用户口述补充","technologies":["cmodel","RTL","PPA"],"confidence":"medium"}],"source_notes":["社招版 DJI 简历 + 项目目录补充"]},"internships":[{"id":"intern-001","company":"华为 海思半导体与器件业务部","role":"数字芯片工程师（实习）","location":"成都","start_date":"2022-06","end_date":"2022-09","responsibilities":["DTP 分组交换芯片设计与验证（TSMC 12FFC）","基于 superbench 框架搭建 UVM 验证环境"],"achievements":[{"claim":"DTP 包交换 IP：八通道数据过滤、优先级排序存储、轮询仲裁调度输出；水线机制高低优先级 FIFO+RAM 架构","metric":"存储面积较通用架构 -15.6%、较其他面积优先架构 -8.3%，平均包延迟降至 2 cycle","technologies":["TSMC 12FFC","FIFO+RAM","轮询仲裁","clock gating","APB"],"source_notes":["校招版简历详述"]},{"claim":"UVM 验证：设计验证方案、分解测试点，编写 xaction/driver/monitor/rm，十余条 tc 回归 200 次通过","metric":"代码覆盖率 95.92%，功能覆盖率 100%","technologies":["UVM","superbench"],"source_notes":["校招版简历详述"]}],"technologies":["TSMC 12FFC","UVM","superbench"],"source_notes":["校招版 + 社招版简历"]}],"skills":{"programming_languages":["Verilog","SystemVerilog"],"frameworks":["UVM","Superbench"],"tools":["VCS","Verdi","Spyglass","DC","PA","Vivado","Modelsim","TimingDesigner","Visio","Edraw"],"platforms":["Linux"],"databases":[],"methodologies":["数字IC设计流程","STA与时序约束","PPA优化","低功耗设计","跨时钟域设计","DFT"],"domain_skills":["数字IC设计","FPGA","NPU/SLAM/ISP IP","图像处理","APB/AXI/UART/I2C/Ethernet 协议"],"soft_skills":["技术文档输出","技术调研","团队协作"]},"awardList":[{"id":"award-001","name":"电子科技大学优秀毕业生","issuer":"电子科技大学","date":"2020","description":null,"source_notes":[]},{"id":"award-002","name":"一等学业奖学金、优秀学生奖学金、优秀毕业生奖学金等共计6次","issuer":"电子科技大学","date":"2022","description":"2016-2022","source_notes":[]},{"id":"award-003","name":"华为杯研究生数学建模竞赛国家二等奖（两次）","issuer":"教育部学位与研究生教育发展中心","date":"2021","description":"2020、2021 两次","source_notes":[]},{"id":"award-004","name":"数学建模美赛 M 奖（13%）、国赛省二等奖等共计5次","issuer":null,"date":"2021","description":"2017-2021","source_notes":[]}],"languageList":[{"language":"Chinese","proficiency":"native","evidence":null},{"language":"English","proficiency":"professional","evidence":"CET-4 553 / CET-6 531 / IELTS 6.5"}],"projects":{"isp":[{"file":"loco_apply.md","title":"loco_apply IP 升级","status":"已交付","intro":"HDR 局部 tone mapping 应用 IP（loco 方案）。","oneLiner":"（待补充）","results":"","md":"# loco_apply IP 升级\n\n- 时间：（待补充）\n- 单位：大疆 威新研发部（ISP）\n- 状态：已交付\n- 简介：HDR 局部 tone mapping 应用 IP（loco 方案）。\n\n## 方案背景：HDR tone mapping 与 loco 方案\n- HDR 成像：多帧不同曝光合成高动态范围图像后，动态范围远超显示/存储能力，需要 tone mapping 压缩到 LDR\n- 全局 tone mapping：单一映射曲线（如 Reinhard：L_out = L / (1 + L)），实现简单，但高光/暗部细节易同时丢失\n- 局部 tone mapping（loco 即此类方案）：基于局部邻域统计做自适应压缩（分层滤波、局部均值引导等），能保留局部对比度，但：\n  - 需要多尺度滤波/统计，硬件面积与功耗较大\n  - 参数多、逐场景调优困难，极限场景效果有限\n- hdrnet 思路：用神经网络端到端学习 HDR 映射（预测逐像素/局部仿射系数 + 引导滤波），参数少、效果好 → 下一代项目以 hdrnet 替换 loco 的动机：减小面积功耗、提升效果（见 技术规划/hdrnet方案输出.md）\n\n## 功能要点\n（待补充）\n\n## 量化成果\n（待补充）\n","type":"ip"},{"file":"3dlut.md","title":"3dlut IP 升级","status":"开发中","intro":"三维查找表色彩校正 IP，支持三线性/四面体插值。","oneLiner":"```","results":"","md":"# 3dlut IP 升级\n\n- 时间：（待补充）\n- 单位：大疆 威新研发部（ISP）\n- 状态：开发中\n- 简介：三维查找表色彩校正 IP，支持三线性/四面体插值。\n\n## 方案背景：3D LUT 色彩校正原理\n- 3D LUT（三维查找表）将输入 RGB 三元组直接映射为输出 RGB 三元组，用于色彩校正、色彩风格化（color grading）、色域转换等\n- 全表存储不可行（如 33³ 节点需存 35937 个 RGB 值），因此只存稀疏节点，中间值由插值求得\n- 三线性插值：设输入落在包围盒 [x0,x1]×[y0,y1]×[z0,z1]，先沿 x 方向做 4 组插值，再沿 y 做 2 组，最后沿 z 做 1 组（共 7 次线性插值）：\n```\nw_x = (x - x0) / (x1 - x0)\nI_xy  = (1 - w_x)·L[x0] + w_x·L[x1]        （每个角点重复此步）\nI_xyz = (1 - w_y)·I_y0 + w_y·I_y1\nI_out = (1 - w_z)·I_z0 + w_z·I_z1\n```\n- 四面体插值（tetrahedral）：把立方体按对角线划分为 6 个四面体，只需最近的 4 个节点做一次加权平均，乘法次数更少，硬件实现常用\n- 硬件要点：输入高位 bit 做 LUT 索引、低位 bit 做插值权重；表深度、位宽与插值方式直接决定面积/精度\n\n## 功能要点\n（待补充）\n\n## 量化成果\n（待补充）\n","type":"ip"},{"file":"hflip.md","title":"hflip IP 升级","status":"开发中","intro":"水平镜像翻转 IP，基于行缓存与地址反转实现。","oneLiner":"```","results":"","md":"# hflip IP 升级\n\n- 时间：（待补充）\n- 单位：大疆 威新研发部（ISP）\n- 状态：开发中\n- 简介：水平镜像翻转 IP，基于行缓存与地址反转实现。\n\n## 方案背景：水平镜像翻转原理\n- 水平镜像（horizontal flip）的坐标映射：\n```\nx' = W - 1 - x\ny' = y\n```\n- 本质是像素读出顺序反转：写地址不变、读地址反转，或用双口 SRAM 的读写地址互换实现\n- 流式处理（raster/tile 输入）下需要缓存一整行：数据按正常顺序写入行缓存（line buffer），读出时从行尾读到行头\n- 优化技巧：\n  - 当行宽 W 为 2 的幂时，x' = ~x（按位取反）即可完成地址反转，省去减法器\n  - 与前后级 DMA/压缩模块配合，可将镜像与搬运合并，减少一次中间缓存\n- 注意与图像格式的配合：yuv/bayer 等格式翻转时需同步处理子采样相位（UV 分量、bayer 相位奇偶）\n\n## 功能要点\n（待补充）\n\n## 量化成果\n（待补充）\n","type":"ip"},{"file":"dither.md","title":"dither IP 升级","status":"开发中","intro":"输出位深压缩抖动 IP，抑制量化条带（banding）。","oneLiner":"```","results":"","md":"# dither IP 升级\n\n- 时间：（待补充）\n- 单位：大疆 威新研发部（ISP）\n- 状态：开发中\n- 简介：输出位深压缩抖动 IP，抑制量化条带（banding）。\n\n## 方案背景：抖动（dither）原理\n- 问题：位深截断（如 14bit 管线 → 10bit 输出）直接截断会在低梯度区域产生周期性量化误差，视觉上呈条带/轮廓（banding）\n- 核心思想：量化前叠加小幅抖动信号，把量化误差从低频条带打散成高频噪声；人眼与后级滤波对高频噪声不敏感，视觉上消除 banding\n- 常用两类方法：\n  - 有序抖动（ordered dithering）：用阈值矩阵（如 Bayer 矩阵）与像素坐标比较决定加 0 还是加 1 LSB\n  - 误差扩散（error diffusion）：以 Floyd-Steinberg 为例，将当前像素量化误差按权重扩散到邻域：\n```\ne  = I(x,y) - Q(I(x,y))\nI(x+1,y)   += 7/16 · e\nI(x-1,y+1) += 3/16 · e\nI(x,y+1)   += 5/16 · e\nI(x+1,y+1) += 1/16 · e\n```\n- ISP 中 dither 通常位于输出位深压缩位置，用极低成本保留低 bit 的视觉信息，提升暗部/渐变场景画质\n\n## 功能要点\n（待补充）\n\n## 量化成果\n（待补充）\n","type":"ip"},{"file":"cve_harden.md","title":"cve_harden 交付","status":"开发中","intro":"ISP CVE IP 的物理实现硬化（PR、时序收敛与签核）。","oneLiner":"（待补充）","results":"","md":"# cve_harden 交付\n\n- 时间：（待补充）\n- 单位：大疆 威新研发部（ISP）\n- 状态：开发中\n- 简介：ISP CVE IP 的物理实现硬化（PR、时序收敛与签核）。\n\n## IP 定位\n（待补充）\n\n## 功能要点\n（待补充）\n\n## 量化成果\n（待补充）\n","type":"harden"},{"file":"AI开发流程实践.md","title":"AI开发流程实践","status":"虚拟组推广中","intro":"基于 cmodel 打通 preg、lrs、lld、rtl、ppa 优化流程，依托组内知识库支持 CBB。","oneLiner":"（待补充）","results":"","md":"# AI开发流程实践\n\n- 时间：2023.07 - 至今\n- 单位：大疆 威新研发部（ISP · AI虚拟组）\n- 状态：虚拟组推广中\n- 简介：基于 cmodel 打通 preg、lrs、lld、rtl、ppa 优化流程，依托组内知识库支持 CBB。\n\n## 工作内容\n- 基于 cmodel 打通 preg、lrs、lld、rtl、ppa 优化流程\n- 基于组内知识库，支持 CBB（Common Building Block）的沉淀与复用\n\n## 量化成果\n（待补充）\n","type":"planning"},{"file":"lut实现前后端联合优化.md","title":"lut 实现前后端联合优化","status":"已落地","intro":"9 种 257x16 gamma LUT 方案评估，求面积/功耗/congestion 均衡解并落地超 50% LUT 相关 IP。","oneLiner":"","results":"项目超过 50% 的 lut 相关 IP 完成落地","md":"# lut 实现前后端联合优化\n\n- 时间：2023.07 - 至今\n- 单位：大疆 威新研发部（技术规划）\n- 状态：已落地\n- 简介：9 种 257x16 gamma LUT 方案评估，求面积/功耗/congestion 均衡解并落地超 50% LUT 相关 IP。\n\n## 背景知识：congestion\n- congestion（布线拥塞）指物理设计中局部区域布线资源供不应求，导致绕线、时序恶化甚至无法完成布线\n- LUT（查找表）方案中，257x16 规格的表项需要大量存储单元和译码/多路选择逻辑，密集的表项访问会占用大量局部布线资源，加剧 congestion\n- 因此 LUT 方案选型不能只看面积和功耗，还需结合布线拥塞做三方权衡，本工作中即为面积、功耗、congestion 三者找均衡解\n\n## 工作内容\n- 实现 9 种 257x16 的 gamma 方案\n- 找出面积、功耗、congestion 的均衡解\n- 完成 PA 到 joules、PTPX 的验证\n\n## 量化成果\n- 项目超过 50% 的 lut 相关 IP 完成落地\n","type":"planning"},{"file":"hdrnet方案输出.md","title":"hdrnet 方案输出","status":"分析中","intro":"输出 NN 实现 HDR 的 hdrnet 方案，目标下一代替换 loco 方案。","oneLiner":"","results":"","md":"# hdrnet 方案输出\n\n- 时间：2023.07 - 至今\n- 单位：大疆 威新研发部（技术规划）\n- 状态：分析中\n- 简介：输出 NN 实现 HDR 的 hdrnet 方案，目标下一代替换 loco 方案。\n\n## 项目背景\n- hdrnet 是用 NN（神经网络）实现 HDR 的方法\n- 目的：在下一代项目中替换 loco 方案，以减小面积和功耗、提升效果\n","type":"planning"}],"npu":[{"file":"linesync_dma.md","title":"项目1：linesync_dma R2T/T2T IP 开发","status":"N3P工艺已TO","intro":"linesync 协议 tile 级在线数据搬运 IP，支持 y/yuv/bayer 格式、固定有损压缩、unshuffle 与 uint2int 转换。","oneLiner":"ai-isp 场景下，基于 linesync 协议完成 isp ocm 到 npu L3 sram 的 tile 级在线数据搬运，支持 y、yuv、bayer 图像格式。","results":"完成 R2T / T2T IP 开发","md":"# 项目1：linesync_dma R2T/T2T IP 开发\n\n- 时间：2023.07 - 至今\n- 单位：大疆 威新研发部（NPU IP 设计）\n- 状态：N3P工艺已TO\n- 简介：linesync 协议 tile 级在线数据搬运 IP，支持 y/yuv/bayer 格式、固定有损压缩、unshuffle 与 uint2int 转换。\n\n## 项目背景\nai-isp 场景下，基于 linesync 协议完成 isp ocm 到 npu L3 sram 的 tile 级在线数据搬运，支持 y、yuv、bayer 图像格式。\n\n## 方案背景\n### 1. DMA 与 tile 级在线搬运\n- 专用搬运引擎（DMA）不经过 CPU，按描述符在源/目的之间批量搬数；本 IP 专门负责 isp ocm → npu L3 sram 的图像搬运\n- tile 级在线搬运：图像切成 tile，NPU 算当前 tile 的同时搬运下一个 tile，计算与访存重叠，隐藏搬运时延\n\n### 2. linesync 协议\n- 行级同步协议：相邻 IP 之间按行握手（每行有效信号 + 就绪信号），实现无背压中断的流水搬运，支持跨 IP 的行级背压与流量控制\n\n### 3. 有损压缩取舍\n- 图像数据压缩（固定有损压缩）直接降低 sram 访问与总线带宽占用\n- 固定压缩率便于硬件地址规划与带宽预算；损失集中在视觉不敏感分量，保证 NPU 推理精度不降\n\n### 4. 格式适配\n- y / yuv / bayer 格式字段拆分（unshuffle）与数据类型转换（uint2int），把 ISP 输出转成 NPU 张量可直接消费的排布\n\n## 功能要点\n- 包含固定有损压缩处理\n- unshuffle\n- uint2int\n\n## 量化成果\n- 完成 R2T / T2T IP 开发，N3P工艺已TO\n","type":"ip"},{"file":"VCR.md","title":"项目2：VCR IP 升级","status":"N3P工艺已TO","intro":"NN 网络前处理 IP，负责 4K 图像 crop+resize、YUV 转 RGB、10b 转 8b 及 dubc 压缩/解压。","oneLiner":"NN 网络前处理 IP，支持 4k 图像 crop+resize 操作、YUV 转 RGB、10b 转 8b 等功能。","results":"完成架构升级","md":"# 项目2：VCR IP 升级\n\n- 时间：2023.07 - 至今\n- 单位：大疆 威新研发部（NPU IP 设计）\n- 状态：N3P工艺已TO\n- 简介：NN 网络前处理 IP，负责 4K 图像 crop+resize、YUV 转 RGB、10b 转 8b 及 dubc 压缩/解压。\n\n## 项目背景\nNN 网络前处理 IP，支持 4k 图像 crop+resize 操作、YUV 转 RGB、10b 转 8b 等功能。\n\n## 方案背景\n### 1. resize 插值算法\n- 双线性插值（2x2 邻域，4 次乘加）：\n```\nI(x,y) = (1-a)(1-b)·I00 + a(1-b)·I10 + (1-a)b·I01 + ab·I11\n其中 a = x - x0, b = y - y0 为小数部分\n```\n- 双三次插值（4x4 邻域，16 个采样点 + 三次核），画质更好但资源开销大，按场景选型\n\n### 2. YUV ↔ RGB 转换（BT.601 示例）\n```\nR = Y + 1.402·(V-128)\nG = Y - 0.344·(U-128) - 0.714·(V-128)\nB = Y + 1.772·(U-128)\n```\n- 不同标准（BT.601/BT.709/BT.2020）系数不同；转换放在 resize 同一条流水线上可省一次中间缓存\n\n### 3. dubc 压缩\n- 块压缩格式（block-based compression）：图像按小块压缩存储/传输，解压靠硬件小面积完成\n- 收益：节省 L3 sram 容量与带宽，代价是固定压缩率下的少量画质损失，适合 NN 前处理输入场景\n\n## 功能要点\n- 基于本人维护的预处理需求收集表完成架构升级\n- 新增 dubc 压缩/解压格式\n- 为解决 pocket pose 网络延时问题，设计两级缓存性能带宽优化\n\n## 量化成果\n- 完成架构升级，N3P工艺已TO\n","type":"ip"},{"file":"非线性算子调研.md","title":"非线性算子调研","status":"已落地","intro":"调研并落地 minimax 二次插值非线性算子（exp/ln/1x/sin/cos/tanh 等），已在 NPU SFU 单元实现。","oneLiner":"调研 nvidia minimax 非线性算子优化实现，包括 exp、ln、1/x、sin/cos、tanh、atan。","results":"相比于常规插值方法：输入范围更大、精度可高 3 个数量级、面积新增 60%；已在 NPU SFU 单元落地","md":"# 非线性算子调研\n\n- 时间：2023.07 - 至今\n- 单位：大疆 威新研发部（NPU IP 设计）\n- 状态：已落地\n- 简介：调研并落地 minimax 二次插值非线性算子（exp/ln/1x/sin/cos/tanh 等），已在 NPU SFU 单元实现。\n\n## 项目背景\n调研 nvidia minimax 非线性算子优化实现，包括 exp、ln、1/x、sin/cos、tanh、atan。\n\n## 原理依据（论文：High-Speed Function Approximation using a Minimax Quadratic Interpolator）\n- 出处：Piñeiro, Oberman(NVIDIA), Muller, Bruguera, IEEE Transactions on Computers, 2005（论文 PDF 与提取文本在同目录 QuadraticIEEETC0305.pdf/.txt）\n- 核心方法：表驱动 + 增强 minimax 二次插值\n  1. 输入拆分：X = X1 + X2，X1 取高 6-7 bit 作为 LUT 索引，X2 为低 bit 余量\n  2. 每子区间用二次多项式逼近：\n```\nf(X) ≈ C2·X2² + C1·X2 + C0\n```\n  3. 系数 C0/C1/C2 由增强 minimax 逼近求得：迭代过程中考虑系数有限字长舍入的影响，使表项可以更短 → LUT 面积进一步缩小\n  4. 多项式求值：专用平方器算 X2²（比标准平方器小且快）+ 冗余算术 + 融合累加树（fused accumulation tree）一次完成多操作数加法，面积小于标准乘法器、时延接近单次乘法\n  5. 舍入策略：注入函数特定 rounding bias 后截断，可保证 1/2/4 ulp 精度\n- 收益本质：达到线性插值（大表）的速度，同时拥有二次插值（小表）的面积（约 12-15Kb/函数 vs 线性方法 50-75Kb）\n- 与普通插值对比：输入范围更大（范围缩减 + 多子区间覆盖）、精度可高 3 个数量级；代价是新增平方器/累加树，面积 +60%\n\n## 本人工作\n- 完成调研文档\n- 算法原型\n- 精度测试代码\n- RTL demo\n\n## 量化成果\n- 相比于常规插值方法：输入范围更大、精度可高 3 个数量级、面积新增 60%\n- 已在 NPU SFU 单元落地\n","type":"planning"}],"slam":[{"file":"deroll_maphex.md","title":"deroll_maphex IP 升级","status":"N6工艺已量产","intro":"成像链路 IP，基于相机内外参与 IMU 数据完成去畸变与卷帘快门 derolling。","oneLiner":"```","results":"PR 面积降低 3.9%；PA 仿真功耗降低 16.1%","md":"# deroll_maphex IP 升级\n\n- 时间：2023.07 - 至今\n- 单位：大疆 威新研发部（SLAM IP 设计）\n- 状态：N6工艺已量产\n- 简介：成像链路 IP，基于相机内外参与 IMU 数据完成去畸变与卷帘快门 derolling。\n\n## 方案背景：相机去畸变与 derolling 原理\n\n### 1. 针孔相机模型与内参\n- 相机内参矩阵 K：fx、fy 为焦距（像素单位），cx、cy 为主点坐标\n```\nK = [ fx  0   cx ]\n    [ 0   fy  cy ]\n    [ 0   0   1  ]\n```\n- 像素坐标 (u, v) → 归一化像平面坐标 (x_n, y_n)：\n```\nx_n = (u - cx) / fx\ny_n = (v - cy) / fy\n```\n\n### 2. 镜头畸变模型（Brown-Conrady）\n- 畸变由两部分组成：径向畸变（k1、k2、k3）与切向畸变（p1、p2）\n- 令 r² = x_n² + y_n²，理想归一化坐标 (x_n, y_n) 经畸变后为：\n```\nx_d = x_n·(1 + k1·r² + k2·r⁴ + k3·r⁶) + 2·p1·x_n·y_n + p2·(r² + 2·x_n²)\ny_d = y_n·(1 + k1·r² + k2·r⁴ + k3·r⁶) + p1·(r² + 2·y_n²) + 2·p2·x_n·y_n\n```\n- 畸变后的实际像素坐标：\n```\nu_d = fx·x_d + cx\nv_d = fy·y_d + cy\n```\n\n### 3. 去畸变流程\n- 去畸变即反变换：已知畸变图像 (u_d, v_d)，求理想坐标 (u, v)\n- 工程上采用前向查表：对每个理想输出像素，用畸变模型计算其在输入畸变图中的对应坐标，再做双线性插值采样，固化映射表（maphex）由硬件直接查表执行\n- 逐点插值公式（双线性，q = 4 邻域像素，w = 与邻域距离权重）：\n```\nI(u, v) = Σ w_i · I(q_i)，  Σ w_i = 1\n```\n\n### 4. 卷帘快门 derolling 原理\n- 卷帘快门逐行曝光：第 y 行的曝光时刻 t_row(y) = t0 + (y / H) · t_readout（H 为图像高度，t_readout 为读出周期）\n- 相机运动时各行对应不同位姿，同一帧内出现整体扭曲（卷帘效应），SLAM 位姿估计误差随之增大\n- 补偿方法：用 IMU 数据积分出每行曝光时刻的旋转 R(t_row)，将各行统一投影到参考时刻 t_ref 的位姿：\n```\nx_ref = K · R_ref · R(t_row)ᵀ · K⁻¹ · x_row\n```\n- 其中 x_row、x_ref 为齐次坐标；R(t_row) 由陀螺仪角速度积分得到：\n```\nR(t_row) = R(t0) · exp(∫ ω(t) dt)， t ∈ [t0, t_row]\n```\n- 与去畸变合并后，maphex 一次性生成「畸变 + 行位姿」的复合映射表，硬件单次查表即可同时完成两项校正\n\n## IP 定位\n成像链路 IP，基于相机内外参和 IMU 数据，完成去畸变和 derolling。\n\n## 优化手段\n- 压缩流水线\n- 计算重排布\n\n## 量化成果\n- PR 面积降低 3.9%\n- PA 仿真功耗降低 16.1%\n- N6工艺已量产（已完成回片及首产品测试）\n","type":"ip"},{"file":"mdtsp.md","title":"mdtsp IP 全新开发","status":"N3P工艺已TO","intro":"多帧处理 IP，负责 dtof 上下目/前后帧融合（pre-process、maphex、warp、merge）。","oneLiner":"多帧处理 IP，包括 pre-process、maphex、warp、merge。","results":"提升 sensor 33% 有效量程","md":"# mdtsp IP 全新开发\n\n- 时间：2023.07 - 至今\n- 单位：大疆 威新研发部（SLAM IP 设计）\n- 状态：N3P工艺已TO\n- 简介：多帧处理 IP，负责 dtof 上下目/前后帧融合（pre-process、maphex、warp、merge）。\n\n## IP 定位\n多帧处理 IP，包括 pre-process、maphex、warp、merge。\n\n## 功能要点\n- 通过上下目、前后帧的 dtof 数据融合处理\n- 提升 sensor 有效量程\n\n## 量化成果\n- 提升 sensor 33% 有效量程\n- N3P工艺已TO\n","type":"ip"},{"file":"voapp.md","title":"项目6：voapp 链路 PPA 优化","status":"N3P工艺已TO","intro":"双目定位链路 IP，计算 harris/census 特征角点并下采样生成 pyramid 图，供 KLT 逐层匹配。","oneLiner":"双目定位链路中，voapp IP 计算特征角点和下采样得到 pyramid 图，用于 klt 进行逐层特征匹配。","results":"IP 相比上一代 PR 面积优化 32.3%","md":"# 项目6：voapp 链路 PPA 优化\n\n- 时间：2023.07 - 至今\n- 单位：大疆 威新研发部（SLAM IP 设计）\n- 状态：N3P工艺已TO\n- 简介：双目定位链路 IP，计算 harris/census 特征角点并下采样生成 pyramid 图，供 KLT 逐层匹配。\n\n## 方案背景：SLAM 双目定位\n- 双目视觉定位通过左右两目相机同步采集图像，利用视差恢复三维信息，并结合前后帧关联估计相机位姿，是 SLAM（即时定位与建图）前端的主流方案\n- 链路核心流程：图像 → 特征提取（角点）→ 图像金字塔 → 特征匹配/跟踪 → 位姿估计\n- 关键 IP 分工：\n  - voapp IP：计算特征角点（harris/census 算子）、下采样生成 pyramid 图\n  - klt IP：KLT（Kanade-Lucas-Tomasi）光流跟踪，在 pyramid 图上逐层匹配特征点\n- pyramid 图的作用：多尺度图像金字塔，KLT 由粗到精逐层跟踪，可处理大位移和快速运动，提升匹配鲁棒性\n- 本工作聚焦 voapp 链路的 PPA 优化，为 klt 提供更省面积、更低功耗的特征与金字塔数据\n\n## IP 定位\n双目定位链路中，voapp IP 计算特征角点和下采样得到 pyramid 图，用于 klt 进行逐层特征匹配。\n\n## 优化手段\n- harris/census 算子 linebuf 合并\n- pyramid 分时复用 memory\n- 追击实现 raster2tile\n\n## 量化成果\n- IP 相比上一代 PR 面积优化 32.3%\n- N3P工艺已TO\n","type":"ip"},{"file":"voa_harden.md","title":"voa_harden 交付","status":"N3P工艺已TO","intro":"SLAM 链路 voa IP 的物理实现硬化（PR、时序收敛与签核）。","oneLiner":"（待补充）","results":"","md":"# voa_harden 交付\n\n- 时间：（待补充）\n- 单位：大疆 威新研发部（SLAM）\n- 状态：N3P工艺已TO\n- 简介：SLAM 链路 voa IP 的物理实现硬化（PR、时序收敛与签核）。\n\n## IP 定位\n（待补充）\n\n## 功能要点\n（待补充）\n\n## 量化成果\n（待补充）\n","type":"harden"},{"file":"支持飞行VLX方案落地.md","title":"支持飞行VLX方案落地","status":"已结项","intro":"飞行快慢系统大模型算法调研与 rk182x 带宽实测，支持 VLX 方案落地。","oneLiner":"","results":"","md":"# 支持飞行VLX方案落地\n\n- 时间：2023.07 - 至今\n- 单位：大疆 威新研发部（SLAM IP 设计）\n- 状态：已结项\n- 简介：飞行快慢系统大模型算法调研与 rk182x 带宽实测，支持 VLX 方案落地。\n\n## 工作内容\n- 飞行快慢系统大模型算法调研\n- 实测 rk182x 带宽\n","type":"planning"},{"file":"no_rst寄存器调研.md","title":"项目8：no_rst 寄存器理论调研","status":"已落地","intro":"无复位寄存器调研并在 SLAM IP 批量落地，收益面积约 1%、功耗约 3%。","oneLiner":"","results":"","md":"# 项目8：no_rst 寄存器理论调研\n\n- 时间：2023.07 - 至今\n- 单位：大疆 威新研发部（技术规划）\n- 状态：已落地\n- 简介：无复位寄存器调研并在 SLAM IP 批量落地，收益面积约 1%、功耗约 3%。\n\n## 方案背景：无复位寄存器原理\n### 1. 为什么能省面积/功耗\n- 标准库中带复位端 DFF 比无复位 DFF 面积更大（每 bit 多复位逻辑）；去掉复位端可换用更小的 cell\n- 复位树本身消耗布线资源与动态功耗：移除复位网络 → 布线拥塞（congestion）缓解、时钟/复位翻转功耗下降\n- 收益量级与实测一致：PR 面积约 -1%、PA 仿真功耗约 -3%\n\n### 2. 适用边界\n- 只对 datapath 寄存器可行：其值在使用前必被流水线刷新覆盖，上电后的未知值（x 态）不会扩散到结果\n- 控制寄存器、状态机、跨时钟域同步器、总线接口寄存器必须保留复位，否则行为不可预测\n\n### 3. 可测性与验证\n- DFT：无复位寄存器在 scan 模式下仍可移位装载，但上电初值不定，需靠 scan reset 或测试向量先写后测\n- 验证手段：x-prop 仿真（未初始化寄存器读传播检查）、formal 检查证明无寄存器被\"先读后写\"、软件初始化流程兜底\n- 风险点：异常复位场景（软复位/局部复位）下无复位寄存器不恢复，需确认业务允许\n\n## 工作内容\n- 基于 claude-opus4.6 完成 SLAM IP 批量替换无复位寄存器\n- 折算 PR 面积有约 1% 收益\n- PA 仿真功耗有约 3% 收益\n","type":"planning"}],"在校":[{"file":"FPGA高速图像采集传输系统.md","title":"项目7：基于 FPGA 的高速图像采集传输系统","status":"Xilinx Artix-7 系列 FPGA 上板测试通过并验收","intro":"基于 FPGA 的 CMOS 图像采集 + SDRAM 缓存 + 千兆以太网传输系统，Artix-7 上板验收。","oneLiner":"应用于无人生产车间工件缺陷检测：通过 CMOS 图像传感器采集工件图像，超分辨率放大后利用千兆以太网送至上位机检测，缺陷被识别时进行反馈。","results":"","md":"# 项目7：基于 FPGA 的高速图像采集传输系统\n\n- 时间：2021.09 - 2022.06（简历另载 2021.06 起）\n- 单位：电子科技大学 × 长安汽车全球研发中心\n- 状态：Xilinx Artix-7 系列 FPGA 上板测试通过并验收\n- 简介：基于 FPGA 的 CMOS 图像采集 + SDRAM 缓存 + 千兆以太网传输系统，Artix-7 上板验收。\n\n## 项目背景\n应用于无人生产车间工件缺陷检测：通过 CMOS 图像传感器采集工件图像，超分辨率放大后利用千兆以太网送至上位机检测，缺陷被识别时进行反馈。\n\n## CMOS 图像采集部分\n- SCCB 总线进行 CMOS 图像传感器模式配置\n- 采集图像数据超分辨率放大后存入 SDRAM\n- 数据缓存与拼接模块实现数据位宽匹配，支持 8/16/24 位宽数据互相转换\n- SDRAM 读写控制器仲裁初始化、自动刷新、读、写等操作切换；双 bank 乒乓读写解决错帧问题\n- 异步 FIFO 处理 CMOS 传感器、SDRAM、以太网数据时钟异步（跨时钟域）\n- 统一局部复位完成异步复位同步释放，提升器件利用率和时序性能\n\n## 千兆以太网收发（IPV4 + UDP）\n- 数据接收：校验 MAC 地址、IP 地址、UDP 端口号，无误时解析数据存入 SDRAM；缺陷被识别时接收上位机发送的特征码\n- 数据发送：持续生成图像数据请求，对有效数据依次封装源/目标 MAC 地址、IP 地址、UDP 端口号、数据、CRC 校验值后发送；预先进行 IP 首部校验请求实现时序对齐\n- CRC 校验机制滤除错误数据，工具自动生成\n","type":"ip"}],"实习":[{"file":"DTP包交换IP.md","title":"项目6：DTP 包交换 IP（TSMC 12nm / 12FFC）","status":"已交付","intro":"八通道包过滤、优先级存储、轮询仲裁的 DTP 分组交换芯片设计与 UVM 验证（TSMC 12FFC）。","oneLiner":"基于 TSMC 12FFC 工艺，完成 DTP 分组交换芯片设计与验证：完成八通道连续输入数据的过滤，依据优先级排序存储，通道间基于轮询调度完成八通道转发输出。","results":"","md":"# 项目6：DTP 包交换 IP（TSMC 12nm / 12FFC）\n\n- 时间：2022.06 - 2022.09\n- 单位：华为 海思半导体与器件业务部 图灵 ICT 处理器部（数字芯片工程师，实习）\n- 状态：已交付\n- 简介：八通道包过滤、优先级存储、轮询仲裁的 DTP 分组交换芯片设计与 UVM 验证（TSMC 12FFC）。\n\n## 项目背景\n基于 TSMC 12FFC 工艺，完成 DTP 分组交换芯片设计与验证：完成八通道连续输入数据的过滤，依据优先级排序存储，通道间基于轮询调度完成八通道转发输出。\n\n## 设计要点\n- 面积：加入水线机制的高低优先级 FIFO+RAM 架构，存储面积较通用架构降低 15.6%，较其他面积优先架构降低 8.3%\n- 吞吐：八通道独立仲裁器提高输出通道吞吐率，平均包延迟降低至 2 个 cycle\n- 包过滤存储：统一错误过滤机制保证可拓展性；适当增大 RAM 深度防止覆写；拼接 EOP 与数据存入 RAM（而非存储包长）大幅降低面积\n- 包读出：FIFO 预读机制提前生成仲裁请求保证输出无气泡；读写指针水线迫近时送出低优先级包防止覆写；各通道控制逻辑独立、输出并行以降低时延\n- 仲裁：轮询仲裁保证公平；八通道仲裁模块独立并行处理\n- 输出选择：插入 clock gating，vld 无效时暂停数据选择，降低功耗\n- 配置寄存器：APB 异步桥实现 CPU APB 接口跨时钟域同步；支持包数统计上报；接收错包和 FIFO 上溢时上报中断\n\n## 验证要点\n- 基于 superbench 框架搭建 UVM 验证环境，覆盖包过滤、收发、统计功能，回归覆盖率收敛\n- 设计验证方案，分解测试点覆盖各功能点\n- 编写 xaction、driver、monitor、rm 等，加入流量控制、再封装等功能\n- 十余条 tc 回归 200 次通过，代码覆盖率 95.92%，功能覆盖率 100%\n\n## 其他产出\n- 实习期间输出多份项目内部工具文档\n","type":"ip"}]},"generatedAt":"2026-11-09T17:38:43.676Z"};
-
-const CAT_NAMES = { npu: "NPU", slam: "SLAM", isp: "ISP", "实习": "实习", "在校": "在校" };
-const CAT_ORDER = ["slam", "isp", "npu", "实习", "在校"];
+const DATA = {"profile":{"full_name":"胡皓","preferred_name":null,"headline":"AI-ISP IP设计 / NPU设计","photo":"D:/claude/简历/照片/black.png","location":"深圳","phone":"13865396978","email":"1813149039@qq.com","links":{"github":null,"linkedin":null,"portfolio":null,"website":null,"other":[]}},"objective":{"target_roles":["AI-ISP IP设计","NPU设计"],"target_industries":[],"summary_facts":["毕业三年，目前在大疆威新研发部从事芯片设计（NPU/ISP/SLAM IP）","参与多颗芯片流片：N6工艺已回片及首产品测试、多个 IP 即将 N3P工艺流片","电子科技大学硕士（保研，研究方向 FPGA），华为海思实习经历"]},"projectCount":19,"jobs":[{"company":"NVIDIA","title":"Senior ASIC Engineer (Video IP)","city":"上海","req":"3-5年 RTL/微架构（视频/图像处理），综合/时序/功耗","source":"官方Workday","apply":"https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/China-Shanghai/Senior-ASIC-Engineer_JR2029276"},{"company":"Qualcomm","title":"ASIC Design Senior Staff Engineer","city":"上海","req":"8-12年 交换机/PON ASIC 全流程","source":"官方careers","apply":"https://careers.qualcomm.com/careers/job/446721805205-asic-design-senior-staff-engineer-shanghai-china"},{"company":"华为海思","title":"芯片与器件设计工程师-数字芯片意向","city":"深圳/上海/北京/南京/杭州/西安/成都等","req":"Verilog/SV，Synthesis/Lint/Formal/STA 全流程","source":"career.huawei.com","apply":"https://career.huawei.com/cn/job-details?advertisementId=36387"},{"company":"海光","title":"IC设计工程师（IP集成设计部）","city":"天津/西安/北京/成都/上海","req":"RTL/LINT/CDC/UPF/综合/SDC/STA；GPU/视频/NPU IP 优先","source":"官方mokahr","apply":"https://app.mokahr.com/social-recruitment/hygon/169938#/job/1415603a-1945-4142-93e0-93b1d607c56c"},{"company":"寒武纪","title":"数字芯片设计工程师（芯片部）","city":"上海/北京/西安","req":"3年+ SoC前端、微架构、PPA、SDC","source":"官方mokahr","apply":"https://app.mokahr.com/social-recruitment/cambricon/1113#/job/c122b4ac-846e-468a-a2df-ec4c2fea8518"},{"company":"壁仞科技","title":"GPGPU核设计工程师","city":"上海","req":"模块 RTL 设计与交付，低功耗策略","source":"官方mokahr","apply":"https://app.mokahr.com/apply/biren/44726"},{"company":"燧原科技","title":"芯片前端设计工程师","city":"北京/上海","req":"3年+ IP设计，Verilog/SV、Lint/CDC/综合/Timing","source":"官方mokahr","apply":"https://app.mokahr.com/apply/enflame/40891#/job/860795af-b5b9-4117-8a93-fcb7703de89e"},{"company":"昆仑芯","title":"SoC设计工程师","city":"北京/上海","req":"AI芯片SoC集成、RTL、clock/reset/low power、tapeout","source":"百度人才网","apply":"https://talent.baidu.com/jobs/detail/SOCIAL/499e4a87-b8ba-408c-9813-e6fc5a39cfd0"},{"company":"天数智芯","title":"数字IC设计工程师-Core Unit","city":"上海","req":"2年+ GPGPU/AI加速器模块、CU微架构、低功耗","source":"官方mokahr","apply":"https://app.mokahr.com/social-recruitment/iluvatar/98705#/job/502f6e2c-7318-45df-b452-5398d94aa828"},{"company":"芯擎科技","title":"多媒体IP设计工程师","city":"上海闵行","req":"3-5年 GPU/ISP/显示子系统 IP，RTL交付（25-40k·15薪）","source":"猎聘官方","apply":"https://www.liepin.com/job/1985302575.shtml"},{"company":"地平线","title":"SoC芯片设计工程师（关键技术部）","city":"成都/西安","req":"3年+ RTL/Lint/CDC/Synthesis/STA/PPA","source":"官方WeCruit","apply":"https://wecruit.hotjob.cn/SU64819a4f2f9d2433ba8b043a/pb/social.html"},{"company":"瑞芯微","title":"数字IC设计工程师（NPU）","city":"上海浦东","req":"3年+ NPU IP设计、SoC集成、性能功耗分析","source":"官方mokahr","apply":"https://hr.rock-chips.com/social-recruitment/rock-chips/44101#/job/f6f8686c-30c1-4998-8428-f4d5e669dba2"},{"company":"思特威","title":"数字电路设计工程师","city":"上海闵行","req":"3年+ Verilog/SV，图像处理算法实现优先","source":"官方mokahr","apply":"https://app.mokahr.com/social-recruitment/smartsenstech1/56087#/job/f81bf292-8ae5-4452-a805-e402a6364287"},{"company":"晶晨","title":"数字IC设计工程师/专家","city":"上海/深圳/北京","req":"RTL/SoC集成/低功耗，图像处理/高速接口IP","source":"官网招聘页","apply":"https://www.amlogic.cn/about/jobs/index.html"},{"company":"腾讯","title":"芯片设计工程师","city":"上海/北京/深圳","req":"3年+ RTL/综合/STA/DFT，ARM/RISC-V、Cache/总线","source":"腾讯招聘API","apply":"http://careers.tencent.com/jobdesc.html?postId=2085290428614848512"},{"company":"小米","title":"多媒体数字芯片设计工程师","city":"上海/北京/西安","req":"2年+ AI/ISP/CV/显示/编解码 IP 集成","source":"飞书ATS","apply":"https://xiaomi.jobs.f.mioffice.cn/index/position/7194832337271177325/detail"},{"company":"阿里平头哥","title":"SoC Top设计工程师/专家","city":"上海/深圳/北京/西安","req":"5年+ 数据中心SoC、RAS、NOC/DDR/PCIe","source":"官方门户","apply":"https://recruitment.t-head.cn/off-campus/position-detail?positionId=7000032007"},{"company":"大疆","title":"中/高级芯片设计工程师（NPU）","city":"深圳/上海","req":"4年+ NPU/GPU/CPU前端、AMBA/NOC","source":"官方mokahr","apply":"https://apply.careers.dji.com/social-recruitment/dji/170070/#/job/e1e3dc5b-930e-4362-90fa-27bf400a3848"},{"company":"蔚来","title":"AI 芯片数字前端设计工程师","city":"深圳","req":"3年+ NPU前端、Verilog/SV、PPA、AXI、GEMM/卷积","source":"飞书ATS","apply":"https://nio.jobs.feishu.cn/index/position/detail/7696738388985563443"},{"company":"豪威集团（OmniVision）","title":"ISP RTL Design Engineer（新加坡）","city":"新加坡","req":"ISP RTL 设计；中国区渠道：公众号「豪威招聘」/51job","source":"全球官网jobvite","apply":"https://jobs.jobvite.com/ovt"},{"company":"芯动科技","title":"数字IC设计 / SoC 前端工程师（招聘平台投递）","city":"武汉/西安/上海/苏州","req":"SoC 前端设计、IP 集成；投递渠道：BOSS/猎聘搜「芯动科技」","source":"官网无招聘页","apply":"https://www.innosilicon.com/contact"},{"company":"芯原股份","title":"数字IC设计 / 芯片定制方向（简历投递）","city":"上海/成都/南京/合肥/北京/深圳等","req":"NPU/GPU/ISP IP 及 ASIC 定制的数字前端设计；简历投递 hr@verisilicon.com","source":"官网Careers","apply":"https://www.verisilicon.com/cn/Careers"},{"company":"字节跳动","title":"芯片设计工程师（官网检索）","city":"北京/上海/杭州/深圳","req":"自研芯片方向；jobs.bytedance.com 搜索「芯片设计」","source":"官网","apply":"https://jobs.bytedance.com/experienced/position?keywords=%E8%8A%AF%E7%89%87%E8%AE%BE%E8%AE%A1"},{"company":"爱芯元智","title":"数字IC设计（NPU/AI-ISP 方向，社招投递）","city":"上海/西安/杭州","req":"AI 视觉芯片 NPU/AI-ISP 前端设计；简历投递 hr@axera-tech.com","source":"官网","apply":"https://www.axera-tech.com/zh-hans"},{"company":"黑芝麻智能","title":"芯片设计工程师 J10008","city":"深圳/武汉","req":"SoC前端全流程：RTL、系统集成、时钟/复位、低功耗CPF/UPF、nLint/CDC；ISP/GPU/图像处理经验优先","source":"官方北森","apply":"https://bsthr.zhiye.com/social/jobs"},{"company":"AMD","title":"Systems Design Engineer - nBIF/SysHub IPSE","city":"上海","req":"SoC IP 系统设计（IO/互联/共享内存），pre/post-silicon","source":"官方careers","apply":"https://careers.amd.com/jobs/94265"},{"company":"理想汽车","title":"数字前端设计工程师","city":"北京","req":"系统运营 · 智能与信息技术","source":"理想官网","apply":"https://www.lixiang.com/employ/social/list.html?keyword=%E8%8A%AF%E7%89%87"}],"apps":[{"id":1794241692709,"company":"NVIDIA","role":"Senior ASIC Engineer (Video IP)","city":"上海","status":"todo","date":"","note":"","stage":3,"eliminatedAt":null,"salary":"","stageNotes":{"1":"asasA","2":"SA"}}],"generatedAt":"2026-11-09T17:40:03.121Z"};
+const STAGES = ["待投递", "已投递", "已笔试", "已面试1轮", "已面试2轮", "已面试3轮", "已面试4轮", "已面试5轮", "已HR面", "已谈薪"];
 
 function esc(s) {
   return String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
-function mdToHtml(md) {
-  const lines = md.split("\n");
-  let html = "", inUl = false, inPre = false, inTable = false;
-  const flushUl = () => { if (inUl) { html += "</ul>"; inUl = false; } };
-  for (const raw of lines) {
-    const line = raw.trimEnd();
-    if (line.startsWith("```")) { flushUl(); html += inPre ? "</pre>" : "<pre>"; inPre = !inPre; continue; }
-    if (inPre) { html += esc(line) + "\n"; continue; }
-    if (/^\|\s*[-: ]+\|/.test(line)) continue;
-    if (/^\|.*\|$/.test(line)) {
-      flushUl();
-      const cells = line.slice(1, -1).split("|").map((c) => esc(c.trim()));
-      if (!inTable) {
-        html += "<table style='font-size:12.5px;margin:6px 0'>";
-        inTable = true;
-        html += "<tr>" + cells.map((c) => `<th style="border-bottom:1px solid #e3e8ef;padding:4px 8px;text-align:left">${c}</th>`).join("") + "</tr>";
-      } else {
-        html += "<tr>" + cells.map((c) => `<td style="border-bottom:1px solid #f0f3f7;padding:4px 8px">${c}</td>`).join("") + "</tr>";
-      }
-      continue;
-    } else if (inTable) { html += "</table>"; inTable = false; }
-    if (/^#{1,3}\s/.test(line)) {
-      flushUl();
-      const lvl = Math.min(line.match(/^#+/)[0].length + 1, 3);
-      html += `<h${lvl}>${esc(line.replace(/^#+\s*/, ""))}</h${lvl}>`;
-      continue;
-    }
-    if (/^[-*]\s+/.test(line)) {
-      if (!inUl) { html += "<ul>"; inUl = true; }
-      html += `<li>${esc(line.replace(/^[-*]\s+/, ""))}</li>`;
-      continue;
-    }
-    flushUl();
-    if (line.trim() === "") continue;
-    html += `<p>${esc(line)}</p>`;
-  }
-  flushUl();
-  if (inPre) html += "</pre>";
-  if (inTable) html += "</table>";
-  return html;
-}
-
-function sortCats(keys) {
-  return [...keys].sort((a, b) => {
-    const ia = CAT_ORDER.indexOf(a), ib = CAT_ORDER.indexOf(b);
-    return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
-  });
-}
-
-document.querySelectorAll(".pw-tab").forEach(el => {
+document.querySelectorAll("nav.tabs a.tab").forEach(el => {
   el.addEventListener("click", (e) => {
     e.preventDefault();
-    switchSub(el.dataset.p);
+    switchTab(el.dataset.tab);
   });
 });
-function switchSub(name) {
-  document.querySelectorAll(".pw-tab").forEach(b => b.classList.toggle("active", b.dataset.p === name));
+function switchTab(name) {
+  document.querySelectorAll("nav.tabs a.tab").forEach(b => b.classList.toggle("active", b.dataset.tab === name));
   document.querySelectorAll(".panel").forEach(p => p.classList.toggle("active", p.id === "panel-" + name));
   history.replaceState(null, "", "#" + name);
 }
 
-(function render() {
-  const p = DATA.profile, o = DATA.objective || {}, s = DATA.skills || {};
-
-  document.getElementById("heroName").textContent = p.full_name || "";
-  document.getElementById("heroHeadline").textContent = p.headline || "";
-  document.getElementById("heroPhone").textContent = p.phone ? "电话：" + p.phone : "";
-  document.getElementById("heroEmail").textContent = p.email ? "邮箱：" + p.email : "";
-  document.getElementById("heroLoc").textContent = p.location ? "城市：" + p.location : "";
-  document.getElementById("pHeadline").textContent = p.headline || "";
-  document.getElementById("pLoc").textContent = p.location || "";
-  document.getElementById("pRoles").innerHTML = (o.target_roles || []).map(r => `<span class="tag">${esc(r)}</span>`).join("");
-  document.getElementById("sProjects").textContent = Object.values(DATA.projects).flat().length;
-  document.getElementById("sAwards").textContent = (DATA.awardList || []).length;
-
-  document.getElementById("pEdu").innerHTML = DATA.education.map(e =>
-    `<div class="edu"><div class="t">${esc(e.school)} · ${esc(e.major)} · ${esc(e.degree)}（${esc(e.location || "")}）</div>
-     <div class="d">${esc(e.start_date)} - ${esc(e.end_date)} ｜ GPA ${esc(e.gpa || "-")} ｜ ${esc((e.honors || []).join("、"))}</div></div>`).join("");
-
-  const w = DATA.work || {};
-  const ach = (w.achievements || []).filter(a => a.metric && /流片|%|落地|TO|量产/.test(a.metric));
-  let workHtml = `
-    <div class="job-item">
-      <div class="t">${esc(w.company)} · ${esc(w.team)} ｜ ${esc(w.role)}</div>
-      <div class="d">${esc(w.start_date)} - 至今 ｜ ${esc(w.location || "")}</div>
-      <ul>${ach.slice(0, 8).map(a => `<li>${esc(a.claim.split("：")[0])}${a.metric ? "（" + esc(a.metric) + "）" : ""}</li>`).join("")}</ul>
-    </div>`;
-  for (const it of (DATA.internships || [])) {
-    workHtml += `
-    <div class="job-item">
-      <div class="t">${esc(it.company)} ｜ ${esc(it.role)}</div>
-      <div class="d">${esc(it.start_date)} - ${esc(it.end_date)} ｜ ${esc(it.location || "")}</div>
-      <ul>${(it.achievements || []).map(a => `<li>${esc(a.claim)}${a.metric ? "（" + esc(a.metric) + "）" : ""}</li>`).join("")}</ul>
-    </div>`;
-  }
-  document.getElementById("pWork").innerHTML = workHtml;
-
-  const tagCat = { programming_languages: "语言", frameworks: "框架", tools: "工具", platforms: "平台", methodologies: "方法", domain_skills: "领域", soft_skills: "软技能" };
-  document.getElementById("pSkills").innerHTML = Object.keys(tagCat).map(k =>
-    (s[k] || []).length
-      ? `<div style="margin-bottom:6px"><span style="font-size:12px;color:var(--sub);margin-right:6px">${tagCat[k]}</span>${(s[k] || []).map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>`
-      : "").join("");
-
-  document.getElementById("pAwards").innerHTML = `<ul style="margin-left:18px;font-size:13px">${(DATA.awardList || []).map(a => `<li>${esc(a.name)}${a.date ? "（" + esc(a.date) + "）" : ""}</li>`).join("")}</ul>`;
-  document.getElementById("pLangs").innerHTML = (DATA.languageList || []).map(l => `<span class="tag">${esc(l.language)} · ${esc(l.proficiency)}${l.evidence ? "（" + esc(l.evidence) + "）" : ""}</span>`).join("");
-
-  initProjects();
+(function () {
+  const p = DATA.profile, o = DATA.objective || {};
+  document.getElementById("wName").textContent = p.full_name || "";
+  document.getElementById("wHeadline").textContent = p.headline || "";
+  document.getElementById("wPhone").textContent = p.phone || "";
+  document.getElementById("wEmail").textContent = p.email || "";
+  document.getElementById("wLoc").textContent = p.location || "";
+  document.getElementById("wRoles").innerHTML = (o.target_roles || []).map(r => `<span class="tag">${esc(r)}</span>`).join("");
+  document.getElementById("wProjects").textContent = DATA.projectCount;
+  document.getElementById("wJobs").textContent = DATA.jobs.length;
+  document.getElementById("wApps").textContent = DATA.apps.length;
+  document.getElementById("wActive").textContent = DATA.apps.filter(a => a.eliminatedAt === null).length;
+  document.getElementById("genAt").textContent = new Date(DATA.generatedAt).toLocaleString("zh-CN");
+  renderJobs();
+  renderApps();
   const h = location.hash.replace("#", "");
-  if (["basic", "proj"].includes(h)) switchSub(h);
+  if (["personal", "jobs", "apps"].includes(h)) switchTab(h);
 })();
 
-function initProjects() {
-  const cats = sortCats(Object.keys(DATA.projects));
-  const sel = document.getElementById("projCat");
-  sel.innerHTML = '<option value="">全部分类</option>' + cats.map(c => `<option value="${esc(c)}">${CAT_NAMES[c] || esc(c)}（${DATA.projects[c].length}）</option>`).join("");
-  drawProjects("", "");
+function renderJobs() {
+  const kw = document.getElementById("jobFilter").value.trim().toLowerCase();
+  const co = document.getElementById("jobCompany").value;
+  const sel = document.getElementById("jobCompany");
+  const companies = [...new Set(DATA.jobs.map(j => j.company))];
+  sel.innerHTML = '<option value="">全部公司</option>' + companies.map(c => `<option value="${esc(c)}">${esc(c)}</option>`).join("");
+  sel.value = co;
+  const rows = DATA.jobs.filter(j =>
+    (!co || j.company === co) &&
+    (!kw || [j.company, j.title, j.city, j.req].join(" ").toLowerCase().includes(kw))
+  );
+  document.getElementById("jobBody").innerHTML = rows.map(j =>
+    `<tr>
+      <td><span class="company-badge">${esc(j.company)}</span></td>
+      <td>${esc(j.title)}</td>
+      <td>${esc(j.city || "")}</td>
+      <td style="color:var(--sub)">${esc(j.req || "")}</td>
+      <td>${j.apply ? `<a href="${esc(j.apply)}" target="_blank" rel="noopener">官网投递</a>` : ""}</td>
+    </tr>`).join("") || '<tr><td colspan="5"><div class="empty">无匹配岗位</div></td></tr>';
+  document.getElementById("jobMobile").innerHTML = rows.map(j =>
+    `<div class="job-card-m"><div class="t">${esc(j.company)} · ${esc(j.title)}</div>
+     <div class="d">${esc(j.city || "")} ｜ ${esc(j.req || "")}</div>
+     ${j.apply ? `<div style="margin-top:6px"><a href="${esc(j.apply)}" target="_blank" rel="noopener">官网投递</a></div>` : ""}</div>`
+  ).join("") || '<div class="empty">无匹配岗位</div>';
+}
+document.getElementById("jobFilter").addEventListener("input", renderJobs);
+document.getElementById("jobCompany").addEventListener("change", renderJobs);
+
+function stepClass(a, i) {
+  if (a.eliminatedAt !== null) {
+    if (i < a.eliminatedAt) return "done";
+    if (i === a.eliminatedAt) return "eliminated";
+    return "future";
+  }
+  if (i < a.stage) return "done";
+  if (i === a.stage) return "current";
+  return "future";
 }
 
-function drawProjects(kw, cat) {
-  const host = document.getElementById("projList");
-  const cats = sortCats(Object.keys(DATA.projects)).filter(c => !cat || c === cat);
-  host.innerHTML = cats.map(c => {
-    const items = DATA.projects[c].filter(it => !kw || (it.title + it.status + it.oneLiner).toLowerCase().includes(kw));
-    if (!items.length) return "";
-    const design = items.filter(it => it.type !== "planning");
-    const planning = items.filter(it => it.type === "planning");
-    const cardHtml = (it) => `
-        <div class="proj-card ${it.type === "planning" ? "planning" : it.type === "harden" ? "harden" : ""}" data-cat="${esc(c)}" data-file="${esc(it.file)}">
-          <div class="t">${esc(it.title.replace(/^项目\d+：/, ""))}${it.type === "planning" ? '<span class="p-tag">技术规划</span>' : ""}</div>
-          <div class="s"><span class="proj-status">${esc(it.status || "")}</span>${it.intro ? " ｜ " + esc(it.intro) : (it.oneLiner ? " ｜ " + esc(it.oneLiner.slice(0, 46)) : "")}</div>
-          ${it.results ? `<div class="r"><b>成果：</b>${esc(it.results)}</div>` : ""}
-        </div>`;
-    return `<div class="cat-block">
-      <div class="cat-head"><span class="cat-name">${CAT_NAMES[c] || esc(c)}</span><span class="cat-count">${items.length}</span></div>
-      ${design.length ? `<div class="proj-grid">${design.map(cardHtml).join("")}</div>` : ""}
-      ${planning.length ? `<div class="proj-grid planning-row">${planning.map(cardHtml).join("")}</div>` : ""}
+function renderApps() {
+  const APPS = DATA.apps;
+  document.getElementById("aTotal").textContent = APPS.length;
+  document.getElementById("aActive").textContent = APPS.filter(a => a.eliminatedAt === null).length;
+  document.getElementById("aEliminated").textContent = APPS.filter(a => a.eliminatedAt !== null).length;
+  document.getElementById("aOffer").textContent = APPS.filter(a => a.stage >= 9 && a.eliminatedAt === null).length;
+  const host = document.getElementById("appList");
+  if (!APPS.length) { host.innerHTML = '<div class="empty">暂无投递记录</div>'; return; }
+  host.innerHTML = APPS.map(a => {
+    const steps = STAGES.map((s, i) => `<span class="step ${stepClass(a, i)}">${esc(s)}</span>`).join('<span class="arrow" style="color:#c9d2dd;font-size:10px;align-self:center">›</span>');
+    return `<div class="app-row">
+      <div class="app-head">
+        <span class="co">${esc(a.company)}</span>
+        <span class="ro">${esc(a.role)}</span>
+        <span style="font-size:12px;color:#9aa4b2">${esc(a.city || "")}${a.eliminatedAt !== null ? ` ｜ <span class="tag-eliminated">已淘汰于：${esc(STAGES[a.eliminatedAt] || "")}</span>` : ""}</span>
+      </div>
+      <div class="stepper">${steps}</div>
+      ${a.salary ? `<div class="salary-line"><b>待遇：</b>${esc(a.salary)}</div>` : ""}
     </div>`;
-  }).join("") || '<div class="empty">无匹配项目</div>';
-
-  host.querySelectorAll(".proj-card").forEach(el => {
-    el.addEventListener("click", () => openProject(el.dataset.cat, el.dataset.file));
-  });
+  }).join("");
 }
-
-function openProject(cat, file) {
-  const it = (DATA.projects[cat] || []).find(x => x.file === file);
-  document.getElementById("modalText").innerHTML = it && it.md ? mdToHtml(it.md) : "未找到内容";
-  document.getElementById("modal").classList.add("show");
-}
-
-document.getElementById("projFilter").addEventListener("input", e =>
-  drawProjects(e.target.value.trim().toLowerCase(), document.getElementById("projCat").value));
-document.getElementById("projCat").addEventListener("change", e =>
-  drawProjects(document.getElementById("projFilter").value.trim().toLowerCase(), e.target.value));
 </script>
 </body>
 </html>
